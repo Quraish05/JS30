@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap");
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: turquoise;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.bigCard {
+  max-width: 85%;
+  margin: 4rem auto 3rem;
+  padding: 4rem;
+  /* min-height: 60vh; */
+  background-color: white;
+  box-shadow: 12px 12px 16px 0 rgb(0 0 0 / 25%),
+    -8px -8px 12px 0 rgb(255 255 255 / 30%);
+  border-radius: 16px;
+}
+
+.tagLine {
+  font-size: 50px;
+  color: grey;
+
+  font-weight: 700;
+  padding-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.subtitle {
+  font-size: 26px;
+  color: rgb(175, 175, 175);
+
+  padding-bottom: 4rem;
+  margin-top: 0;
+}
+.allKeysWrapper {
+  display: flex;
+  /* justify-content: space-between; */
+  column-gap: 2rem;
+  row-gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.key {
+  /* border: 1px solid turquoise; */
+  padding: 2rem 3rem;
+  transition: all 0.07s;
+  font-size: 24px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgb(99 225 209), rgb(68 185 170));
+  box-shadow: 12px 12px 16px 0 rgb(0 0 0 / 25%),
+    -8px -8px 12px 0 rgb(255 255 255 / 30%);
+  border-radius: 30px;
+  text-align: center;
+  color: white;
+}
+
+.key kbd {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.playing {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, rgb(68 185 170), rgb(99 225 209));
+
+  /* border: 2px solid yellow; */
+  /* border: 0 0 10px yellow; */
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .bigCard {
+    max-width: 80%;
+    margin: 4rem auto;
+    padding: 2rem;
+  }
+
+  .tagLine {
+    font-size: 32px;
+    color: grey;
+    padding-bottom: 2rem;
+    margin-top: 0;
+  }
+
+  .subtitle {
+    font-size: 22px;
+    padding-bottom: 3.5rem;
+  }
+  .allKeysWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+
+  .key {
+    padding: 2rem;
+    font-size: 20px;
+  }
+
+  .key kbd {
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 900;
+    font-size: 26px;
+  }
+}

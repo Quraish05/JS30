@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Update CSS variables with JS</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <script></script>
+
+    <div class="panels">
+      <div class="panel panel1">
+        <p>Hi</p>
+        <p>there</p>
+        <p>how are</p>
+      </div>
+
+      <div class="panel panel2">
+        <p>Hi</p>
+        <p>there</p>
+        <p>how are</p>
+      </div>
+      <div class="panel panel3">
+        <p>Hi</p>
+        <p>there</p>
+        <p>how are</p>
+      </div>
+      <div class="panel panel4">
+        <p>Hi</p>
+        <p>there</p>
+        <p>how are</p>
+      </div>
+      <div class="panel panel5">
+        <p>Hi</p>
+        <p>there</p>
+        <p>how are</p>
+      </div>
+    </div>
+
+    <script>
+      const panels = document.querySelectorAll(".panel");
+
+      function toggleOpen() {
+        this.classList.toggle("open");
+      }
+
+      function toggleActive(e) {
+        if (e.propertyName.includes("flex"))
+          this.classList.toggle("open-active");
+      }
+
+      panels.forEach((p) => p.addEventListener("click", toggleOpen));
+      panels.forEach((p) => p.addEventListener("transitionend", toggleActive));
+    </script>
+  </body>
+</html>

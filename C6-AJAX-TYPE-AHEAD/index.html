@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>AJAX TYPE AHEAD</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <script></script>
+
+    <div>
+      <form class="search-form">
+        <input type="text" class="search" placeholder="Enter a city or state..." />
+        <ul class="suggestions">
+          <li>Filter for a city</li>
+          <li>or a state</li>
+        </ul>
+      </form>
+    </div>
+
+    <script>
+      const cities = [];
+      const endpoint =
+        "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+
+      fetch(endpoint)
+        .then((blob) => blob.json())
+        .then((data) => cities.push(...data));
+
+      function findMatches(wordToMatch, cities) {
+        return cities.filter((place) => {
+          const regex = new RegExp(wordToMatch, "gi");
+          return place.city.match(regex) || place.state.match(regex);
+        });
+      }
+
+      function displayMatches() {
+        const matchesArray = findMatches(this.value, cities);
+
+        const html = matchesArray
+          .map((place) => {
+            const regex = new RegExp(this.value, "gi");
+
+            const cityName = place.city.replace(
+              regex,
+              `<span class="hl">${this.value}</span>`
+            );
+
+            const stateName = place.state.replace(
+              regex,
+              `<span class="hl">${this.value}</span>`
+            );
+
+            return `
+          <li>
+            <span class="name">${cityName}, ${stateName}</span>
+            <span class="population">${place.population}</span>
+          </li>
+          `;
+          })
+          .join("");
+
+        suggestions.innerHTML = html;
+      }
+
+      const searchInput = document.querySelector(".search");
+      const suggestions = document.querySelector(".suggestions");
+
+      searchInput.addEventListener("change", displayMatches); //this will only fire when we click outside the input field, hence we use keyup as well below which will fire this when we are typing
+      searchInput.addEventListener("keyup", displayMatches);
+    </script>
+  </body>
+</html>

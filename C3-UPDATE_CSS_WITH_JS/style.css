@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap");
+
+:root {
+  --blur: 1px;
+  --base: #ffc600;
+  --spacing: 5px;
+
+  --bgColor: #32324e;
+  --primaryTextColor: #fff;
+  --headingColor: #ffdca7;
+  --switchColor: #0c74f6;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bgColor);
+  /* min-height: 93vh; */
+  margin: 0;
+  color: #efefef;
+}
+
+p {
+  margin: 0;
+  color: aliceblue;
+}
+
+img {
+  filter: blur(var(--blur));
+  border: 2px solid var(--base);
+  max-width: 99%;
+  padding: var(--spacing);
+}
+
+label {
+  color: var(--primaryTextColor);
+}
+
+.mainContainer {
+  padding: 30px;
+}
+
+.themingControlBar {
+  margin: 3.5rem auto 2.5rem;
+  display: grid;
+  /* grid-template-columns: repeat(30%, 30%, 20%, 20%); */
+  grid-template-columns: repeat(2, 30% 1fr);
+}
+
+.themingControlBar div {
+  display: flex;
+  align-items: center;
+  grid-gap: 1rem;
+  /* justify-content: space-around; */
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--headingColor);
+}
+
+.subTitle {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.7rem;
+  color: var(--primaryTextColor);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #8a8a8a;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--switchColor);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--switchColor);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .themingControlBar {
+    margin: 2rem auto 2.5rem;
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 1rem;
+  }
+
+  img {
+    max-width: 97%;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-bottom: 2.3rem;
+  }
+
+  .subTitle {
+    font-size: 16px;
+    line-height: 1.4rem;
+  }
+
+  .mainContainer {
+    padding: 35px 20px;
+  }
+}
