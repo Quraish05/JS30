@@ -5,19 +5,50 @@ p {
 }
 
 body {
-  max-width: 90%;
-  margin: 0 auto;
-}
-canvas {
-  background-color: aliceblue;
-  /* width: 100%;
-  min-height: 100vh; */
+  background-color: rgb(255, 219, 58);
 }
 
 .headline {
   font-size: 40px;
   color: #b572d8;
   font-weight: 300;
+}
+
+.inbox {
+  background-color: white;
+  max-width: 50%;
+  margin: 50px auto;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+  /* padding: 20px 40px; */
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #d1e2ff;
+}
+
+input {
+  margin: 1.6rem;
+}
+
+input:checked + p {
+  text-decoration: line-through;
+}
+
+p {
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  flex: 1;
+  font-family: "helvetica neue";
+  font-size: 20px;
+  font-weight: 200;
+  border-left: 1px solid #d1e2ff;
+}
+
+.title {
+  border-left: none;
 }
 
 @media screen and (min-width: 0px) and (max-width: 767px) {

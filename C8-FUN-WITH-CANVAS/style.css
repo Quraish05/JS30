@@ -14,6 +14,10 @@ canvas {
   min-height: 100vh; */
 }
 
+.canvas-layout {
+  width: 100%;
+}
+
 .headline {
   font-size: 40px;
   color: #b572d8;

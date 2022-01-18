@@ -12,12 +12,54 @@
   </head>
 
   <body>
-   
+    <p class="title">Click an item, hold Shitkey & select the last time</p>
+
+    <div class="inbox">
+      <p class="title">To-Do List</p>
+      <div class="item">
+        <input type="checkbox" />
+        <p>hey there</p>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <p>select</p>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <p>your list</p>
+      </div>
+      <div class="item">
+        <input type="checkbox" />
+        <p>end of it</p>
+      </div>
+    </div>
 
     <script>
-     
-    </script>
+      const allCheckboxes = document.querySelectorAll(
+        '.inbox input[type="checkbox"]'
+      );
 
-    
+      let lastChecked;
+
+      function handleCheck(e) {
+        let inBetween = false;
+
+        if (e.shiftKey && this.checked) {
+          allCheckboxes.forEach((checkbox) => {
+            if (checkbox === this || checkbox === lastChecked) {
+              inBetween = !inBetween;
+            }
+
+            if (inBetween) {
+              checkbox.checked = true;
+            }
+          });
+        }
+
+        lastChecked = this;
+      }
+
+      allCheckboxes.forEach((ch) => ch.addEventListener("click", handleCheck));
+    </script>
   </body>
 </html>
