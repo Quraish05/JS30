@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Key Sequence Detection</title>
+    <script
+      type="text/javascript"
+      src="https://www.cornify.com/js/cornify.js"
+    ></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <p class="title">Key Sequence Detection</p>
+      <p class="subtitle">Type the 3 character secret code</p>
+      <p class="message"></p>
+    </div>
+  </body>
+
+  <script>
+    let pressedKeys = [];
+    const secretCode = "qur";
+    const message = document.querySelector(".message");
+
+    window.addEventListener("keyup", (e) => {
+      pressedKeys.push(e.key);
+
+      //this below splice() will trim the array from 0th index after it
+      //reaches the length of secretCode
+      pressedKeys.splice(
+        -secretCode.length - 1,
+        pressedKeys.length - secretCode.length
+      );
+
+      if (pressedKeys.join("").includes(secretCode)) {
+        message.innerHTML = "You were successful in guessing the secret code!";
+      } else if (pressedKeys.length == 3) {
+        message.innerHTML = "Oh no! Try again :(";
+      }
+    });
+  </script>
+
+  <style>
+    body {
+      font-family: "Montserrat", sans-serif;
+      background-color: rgb(177, 177, 255);
+    }
+
+    .wrapper {
+      max-width: 60%;
+      margin: 40px auto;
+    }
+
+    .title {
+      font-size: 40px;
+      margin: 0 0 2rem 0;
+    }
+    .subtitle {
+      font-size: 25px;
+      margin: 0 0 3rem 0;
+    }
+
+    .message {
+      font-size: 20px;
+    }
+  </style>
+</html>
