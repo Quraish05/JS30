@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LocalStorage</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Hello there!</h1>
+    </div>
+
+    <script>
+      const hero = document.querySelector(".hero");
+      const text = document.querySelector("h1");
+
+      function shadow(e) {
+        const { offsetWidth: width, offsetHeight: height } = hero; //to get width & height of Hero element
+        let { offsetX: x, offsetY: y } = e; //to get X & Y positions when we are moving the mouse
+        let walk = 100;
+
+        console.log("this", this);
+
+        console.log("e.target", e.target);
+        console.log("e.target.offsetLeft", e.target.offsetLeft);
+        console.log("e.target.offsetTop", e.target.offsetTop);
+
+        if (this !== e.target) {
+          //this is Hero, e.target will either be h1 or hero depending on where the mouse is
+          x = x + e.target.offsetLeft;
+          y = y + e.target.offsetTop;
+        }
+
+        const xWalk = Math.round((x / width) * walk - walk / 2);
+        const yWalk = Math.round((y / width) * walk - walk / 2);
+
+        text.style.textShadow = `${xWalk}px ${yWalk}px 2px lightgrey`;
+      }
+      hero.addEventListener("mousemove", shadow);
+    </script>
+
+    <style>
+      html {
+        color: black;
+        font-family: sans-serif;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+      }
+
+      h1 {
+        text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+        font-size: 100px;
+      }
+    </style>
+  </body>
+</html>
